@@ -82,6 +82,7 @@
   /* ── Stats ── */
   .chip-break { flex-basis: 100%; height: 0; }
 .stats-bar { padding: 12px 32px; font-size: 13px; color: #888; height: 40px; display: flex; align-items: center; margin-top: 12px; }
+  .time-note { color: #aaa; }
   .stats-bar strong { color: #2c2c2c; font-weight: 600; }
 
   /* ── Grid ── */
@@ -10237,6 +10238,7 @@ const RECIPES = [
       id: 424,
       name: '起司泡菜肉捲',
       category: '豬肉',
+      time: '15分鐘',
       source: 'https://www.instagram.com/p/C_AxKGBvdD7/',
       ingredients: '梅花肉1盒、起司片2片、海苔1片、泡菜少許、太白粉',
       steps: '1.鋪肉片撒太白粉 2.放海苔、起司、泡菜 3.捲起 4.煎至均勻上色 5.灑香油起鍋'
@@ -10245,6 +10247,7 @@ const RECIPES = [
       id: 425,
       name: '剝皮辣椒雞細扁麵',
       category: '義大利麵',
+      time: '25分鐘（＋醃漬30分鐘）',
       source: 'https://www.instagram.com/p/C_HfNqVP4LH/',
       ingredients: '義大利細扁麵100克、雞腿肉160克（醃料：鹽1小匙、白胡椒粉1/2小匙）、剝皮辣椒3根、蒜頭5瓣、洋蔥1/4顆、蔥1支、鴻禧菇1/2包、雞高湯100克、剝皮辣椒汁50克',
       steps: '1.切料備用 2.煮麵減2分鐘撈起 3.煎雞腿皮面朝下炒香料加菇辣椒 4.加高湯和辣椒汁下麵大火拌炒至無湯汁灑蔥花'
@@ -10253,6 +10256,7 @@ const RECIPES = [
       id: 426,
       name: '干貝白醬蘑菇燉飯',
       category: '飯食',
+      time: '35分鐘',
       source: 'https://www.instagram.com/p/C_IeJkSyxsp/',
       ingredients: '生食級干貝1盒、洋菇半盒約10朵、鮮奶約200ml、奶油15-20克、麵粉1匙',
       steps: '❶吸乾干貝水分用奶油小火煎至金黃起鍋 ❷洋菇切厚片小火炒出水分 ❸挖洞加奶油一勺麵粉炒至融化 ❹倒鮮奶黑胡椒鹽白酒調味 ❺倒白飯干貝蒜末起士絲拌炒至濃稠起鍋'
@@ -10261,6 +10265,7 @@ const RECIPES = [
       id: 427,
       name: '味噌烤雞腿串',
       category: '雞肉',
+      time: '25分鐘（＋醃漬2小時）',
       source: 'https://www.instagram.com/p/C_MWyDJuNbN/',
       ingredients: '去骨雞腿3片、芝麻；醃製：味噌1大匙、味醂2匙、醬油2匙',
       steps: '①剪成約4.5cmx4.5cm ②混合醬料均勻塗抹冰箱醃30分鐘以上 ③竹籤燙過串起 ④烤箱預熱190度烤10分鐘翻面灑芝麻 ⑤200度再烤10分鐘完成'
@@ -10269,6 +10274,7 @@ const RECIPES = [
       id: 428,
       name: '鮮粹雞胸燜金針',
       category: '雞肉',
+      time: '20分鐘（＋醃漬30分鐘）',
       source: 'https://www.instagram.com/p/C_VCIIJvb2u/',
       ingredients: '雞胸肉200g、金針菇1包、洋蔥1/4顆、酪梨油、蒜末、蔥花、鮮粹雞湯粉約2g；醃料：醬油15ml、砂糖1茶匙、蒜泥、鮮粹雞湯粉1/2茶匙、片栗粉5g',
       steps: '①醃製雞胸肉 ②撒片栗粉抓醃靜置10分鐘 ③備料 ④加油熱鍋炒洋蔥蒜末 ⑤鋪金針菇調味炒軟 ⑥熄火鋪平雞胸肉 ⑦鍋邊加30ml水蓋鍋小火悶1分30秒 ⑧灑蔥花完成'
@@ -10277,6 +10283,7 @@ const RECIPES = [
       id: 429,
       name: '米紙蝦仁煎',
       category: '海鮮',
+      time: '15分鐘',
       source: 'https://www.instagram.com/p/C_VCMm0Poao/',
       ingredients: '蝦仁6隻、米紙1張、雞蛋1顆、小白菜1小把；醬汁：0卡糖1大匙、味噌1大匙、無糖番茄醬1大匙、薄鹽醬油1大匙、水1米杯、太白粉水半碗',
       steps: '1.小白菜洗淨切段 2.鍋中放調味料開火攪拌融化加太白粉水煮至濃稠備用 3.不沾鍋噴薄油放米紙打蛋開火打散依序放蝦仁小白菜蓋鍋悶煎2分鐘翻面再煎2分鐘淋醬汁'
@@ -10285,6 +10292,7 @@ const RECIPES = [
       id: 430,
       name: '減脂無澱粉三明治',
       category: '輕食',
+      time: '15分鐘',
       source: 'https://www.instagram.com/p/C_XM9spvqRn/',
       ingredients: '金針菇100g、雞蛋3顆、番茄切片、小黃瓜絲、低脂起司、無油無添加雞胸；調味料：鹽、黑胡椒、白胡椒粉、黃芥末醬',
       steps: '→金針菇鋪滿不沾鍋 →三顆雞蛋調味打散倒入煎成蛋皮 →切一半 →放低脂起司片 →放喜歡的蔬菜 →放舒肥雞胸 →灑黑胡椒白胡椒粉 →黃芥末塗蛋皮 →捲起完成'
@@ -10293,6 +10301,7 @@ const RECIPES = [
       id: 431,
       name: '米紙櫛瓜蝦餃',
       category: '海鮮',
+      time: '30分鐘',
       source: 'https://www.instagram.com/p/C_YEXMmv8ES/',
       ingredients: '豬絞肉180克、蝦仁180克、櫛瓜180克；調味料：鹽1小匙、薑泥1小匙、醬油1小匙、白胡椒粉適量、越南米紙9張；醬汁：醬油2小匙、烏醋4小匙、蒜香辣油1小匙',
       steps: '櫛瓜切丁灑鹽靜置→沖洗擠乾→蝦仁打碎備用→豬絞肉蝦仁薑泥白胡椒攪打至黏性→拌入櫛瓜→米紙剪1/4兩張疊泡水包餡→烘焙紙抹油→電鍋外鍋半杯水蒸熟→醬汁拌勻淋上'
@@ -10301,6 +10310,7 @@ const RECIPES = [
       id: 432,
       name: '馬鈴薯起司煎餅',
       category: '蔬食',
+      time: '20分鐘',
       source: 'https://www.instagram.com/p/C_hYF5-Pj5P/',
       ingredients: '馬鈴薯中型1顆、乳酪絲少許、鹽巴、黑胡椒粉、麵粉2匙',
       steps: '1.馬鈴薯削皮刨絲泡水5分鐘洗去澱粉瀝乾 2.加鹽巴黑胡椒粉及2匙麵粉抓拌均勻 3.鍋熱油下馬鈴薯壓扁中小火煎至金黃翻面灑乳酪絲蓋鍋蓋燜至起司融化 4.出鍋灑黑胡椒或沾番茄醬'
@@ -10309,6 +10319,7 @@ const RECIPES = [
       id: 433,
       name: '奶油蒜蝦飯',
       category: '飯食',
+      time: '15分鐘',
       source: 'https://www.instagram.com/p/C_ky6jgy8yE/',
       ingredients: '蝦仁1盒、奶油20-40克、炸蒜片少許、白飯170克、蔥3株、阿順師胡椒粉少許、醬油1匙',
       steps: '❶蔥白蔥綠分開切花鍋熱下奶油放蝦仁胡椒粉煎至金黃取出 ❷原鍋下蔥白白飯炒開加胡椒粉再加炸蒜片蝦仁蔥綠拌炒起鍋 ❸鋪蝦仁放奶油淋醬油噴槍炙燒完成'
@@ -10317,6 +10328,7 @@ const RECIPES = [
       id: 434,
       name: '鮮蝦菇菇豆包麵',
       category: '海鮮',
+      time: '20分鐘',
       source: 'https://www.instagram.com/p/C_uw_MEsIsH/',
       ingredients: '生豆包4片、蝦子適量、鴻禧菇1包、蒜末；醬汁：番茄醬3大匙、是拉差辣椒醬1大匙、醬油1小匙、烏醋1小匙、糖1小匙、水2大匙',
       steps: '1.蝦子鹽巴白胡椒抓醃煎至轉色備用 2.原鍋下鴻禧菇煸炒加油爆香蒜末 3.豆包麵下鍋加醬汁炒均 4.蝦子回鍋撒蔥花完成'
@@ -11769,6 +11781,30 @@ function parseMinutes(t) {
   return Math.round(h * 60 + m);
 }
 
+function formatTimeDisplay(t) {
+  if (!t) return '-';
+  if (typeof t === 'number') t = t + '分鐘';
+  t = String(t);
+  // 拆出括號備註
+  var note = null;
+  var main = t.replace(/[（(]([^）)]+)[）)]/g, function(_, n) { note = n; return ''; }).trim();
+  // 用 parseMinutes 取分鐘數
+  var mins = parseMinutes(main);
+  var display;
+  if (mins >= 60) {
+    var h = Math.floor(mins / 60);
+    var m = mins % 60;
+    display = m > 0 ? h + ' 小時 ' + m + ' 分鐘' : h + ' 小時';
+  } else if (mins > 0) {
+    display = mins + ' 分鐘';
+  } else {
+    // 無法解析，加空格
+    display = main.replace(/(\d+)/g, ' $1 ').replace(/\s+/g, ' ').trim();
+  }
+  if (note) display += ' <span class="time-note">＋' + note + '</span>';
+  return display;
+}
+
 var TIME_BUCKETS = [
   { label: '10 分鐘內', min: 0,  max: 10  },
   { label: '10–20 分鐘', min: 11, max: 20  },
@@ -11952,6 +11988,7 @@ function render() {
     '西式': ['西式', '義式', '美式', '西班牙', '美式甜點']
   };
 
+  var filtered = [];
   RECIPES.forEach(function(r) {
     // Cuisine filter
     if (activeCuisine) {
@@ -11975,15 +12012,29 @@ function render() {
     });
     if (activeTags.length > 0 && hits.length < activeTags.length) return;
 
-    shown++;
+    filtered.push(r);
+  });
+
+  // 耗時排序（短→長，未知排最後）
+  filtered.sort(function(a, b) {
+    var ma = parseMinutes(a.time || '9999');
+    var mb = parseMinutes(b.time || '9999');
+    return ma - mb;
+  });
+
+  shown = filtered.length;
+  filtered.forEach(function(r) {
+    var title = r.title || r.name || '';
+    var emoji = r.emoji || '🍽️';
+    var time = formatTimeDisplay(r.time);
     var card = document.createElement("div");
     card.className = (activeTags.length > 0 || activeCuisine) ? "card match" : "card";
     card.innerHTML =
       '<div class="card-row">' +
-        '<span class="card-emoji">' + r.emoji + "</span>" +
+        '<span class="card-emoji">' + emoji + "</span>" +
         '<div class="card-info">' +
-          '<div class="card-title">' + r.title + "</div>" +
-          '<div class="card-time">⏱ ' + r.time + "</div>" +
+          '<div class="card-title">' + title + "</div>" +
+          (time !== '-' ? '<div class="card-time">⏱ ' + time + "</div>" : '') +
         "</div>" +
       "</div>";
 
