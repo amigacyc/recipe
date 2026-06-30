@@ -44,11 +44,11 @@
   .quick-bar {
     background: #fff;
     padding: 10px 32px;
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap;
     top: 57px; z-index: 95;
   }
   .quick-bar::-webkit-scrollbar { display: none; }
-  .quick-label { font-size: 12px; color: #aaa; margin-right: 4px; flex-shrink: 0; }
+  .quick-label { font-size: 12px; color: #aaa; margin-right: 4px; flex-shrink: 0; padding-top: 4px; }
   .q-chip.search-match { background: #fff9f5; color: #e85d04; }
   .q-chip {
     display: inline-flex; align-items: center;
@@ -63,7 +63,6 @@
   /* ── Cuisine filter ── */
   .cuisine-bar {
     background: #fff;
-    border-bottom: 1px solid #ebe8e3;
     padding: 10px 32px;
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
     top: 99px; z-index: 90;
@@ -199,7 +198,7 @@
     .card-time { font-size: 11px; }
   }
   
-  .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; align-items: center; }
+  .chips-wrap { display: flex; flex-wrap: wrap; column-gap: 8px; row-gap: 4px; flex: 1; align-items: center; }
   </style>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11813,7 +11812,7 @@ function scaleQty(qty, factor) {
 }
 
 // ── Quick ingredient chips ────────────────────────────────────────
-var QUICK_INGS = ['雞蛋','雞胸','雞腿','豬肉','豬絞肉','牛肉','蝦','鮭魚','豆腐','番茄','高麗菜','花椰菜','馬鈴薯','茄子','菠菜','杏鮑菇','秋葵','豆芽','起司','味噌'];
+var QUICK_INGS = ['雞蛋','雞胸','雞腿','豬肉','豬絞肉','牛肉','蝦','鮭魚','豆腐','番茄','高麗菜','花椰菜','馬鈴薯','茄子','菠菜','杏鮑菇','秋葵','豆芽','起司','味噌','|','巧克力','豆漿','牛奶','蘋果','香蕉'];
 
 function buildQuickBar(searchText) {
   var bar = document.getElementById("quickBar");
@@ -11829,6 +11828,13 @@ function buildQuickBar(searchText) {
   var locked = lockedTags.map(function(t) { return t.toLowerCase(); });
   var st = (searchText || "").trim().toLowerCase();
   QUICK_INGS.forEach(function(ing) {
+    if (ing === '|') {
+      var br = document.createElement("div");
+      br.style.flexBasis = "100%";
+      br.style.height = "0";
+      bar.appendChild(br);
+      return;
+    }
     var chip = document.createElement("button");
     var isActive = locked.indexOf(ing.toLowerCase()) !== -1;
     var isMatch = st && !isActive && ing.toLowerCase().indexOf(st) !== -1;
@@ -11895,13 +11901,25 @@ function hasFilter() {
 
 function renderTimeBar() {
   var bar = document.getElementById("timeBar");
-  var html = '<span class="time-label">耗時</span><div class="chips-wrap">';
+  bar.innerHTML = "";
+  var label = document.createElement("span");
+  label.className = "time-label";
+  label.textContent = "耗時";
+  bar.appendChild(label);
+  var chipsWrap = document.createElement("div");
+  chipsWrap.className = "chips-wrap";
+  bar.appendChild(chipsWrap);
   TIME_BUCKETS.forEach(function(b) {
-    var active = activeTime && activeTime.label === b.label ? ' active' : '';
-    html += '<button class="time-chip' + active + '" onclick="toggleTime(' + JSON.stringify(b) + ')">' + b.label + '</button>';
+    var chip = document.createElement("button");
+    chip.className = "c-chip" + (activeTime && activeTime.label === b.label ? " active" : "");
+    chip.textContent = b.label;
+    chip.onclick = function() {
+      activeTime = (activeTime && activeTime.label === b.label) ? null : b;
+      renderTimeBar();
+      render();
+    };
+    chipsWrap.appendChild(chip);
   });
-  html += '</div>';
-  bar.innerHTML = html;
 }
 
 function toggleTime(bucket) {
