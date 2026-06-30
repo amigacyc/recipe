@@ -181,7 +181,6 @@
   /* ── Time filter ── */
   .time-bar {
     background: #fff;
-    border-bottom: 1px solid #ebe8e3;
     padding: 10px 32px;
     display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
@@ -199,6 +198,8 @@
     .card-title { font-size: 13px; }
     .card-time { font-size: 11px; }
   }
+  
+  .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; align-items: center; }
   </style>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -281,7 +282,7 @@ const RECIPES = [
   },
   {
     id:2, title:"鹹蛋黃起司鮭魚燒", emoji:"🐟",
-    cuisine:"創意", baseServings:2, servings:"2人份", time:"30 分鐘",
+    cuisine:"西式", baseServings:2, servings:"2人份", time:"30 分鐘",
     tags:["創意"],
     source:"https://www.instagram.com/p/DY1DskdJ05Z/",
     ingredients:[
@@ -303,7 +304,7 @@ const RECIPES = [
   },
   {
     id:3, title:"咖哩優格烤雞", emoji:"🍗",
-    cuisine:"南洋", baseServings:2, servings:"2人份", time:"25 分鐘",
+    cuisine:"印度式", baseServings:2, servings:"2人份", time:"25 分鐘",
     tags:["烤雞","咖哩","氣炸","低碳"],
     source:"https://www.instagram.com/p/DZKO56kyLAi/",
     ingredients:[
@@ -369,7 +370,7 @@ const RECIPES = [
   },
   {
     id:6, title:"微波嫩雞胸", emoji:"💪",
-    cuisine:"懶人", baseServings:1, servings:"1人份", time:"10 分鐘",
+    cuisine:"台式", baseServings:1, servings:"1人份", time:"10 分鐘",
     tags:["高蛋白","微波","懶人","低碳"],
     source:"https://www.instagram.com/p/DZYm6UWjuZc/",
     ingredients:[
@@ -590,7 +591,7 @@ const RECIPES = [
   },
   {
     id:15, title:"墨西哥辣椒雞肉漢堡排", emoji:"🍔",
-    cuisine:"創意", baseServings:4, servings:"4人份", time:"30 分鐘",
+    cuisine:"西式", baseServings:4, servings:"4人份", time:"30 分鐘",
     tags:["創意","低碳","高蛋白"],
     source:"https://www.instagram.com/p/CPXLAjeHi9u/",
     ingredients:[
@@ -638,7 +639,7 @@ const RECIPES = [
   },
   {
     id:17, title:"南瓜松露雞肉燉飯", emoji:"🎃",
-    cuisine:"創意", baseServings:2, servings:"2人份", time:"40 分鐘",
+    cuisine:"西式", baseServings:2, servings:"2人份", time:"40 分鐘",
     tags:["創意","燉飯"],
     source:"https://www.instagram.com/p/COt-ltoHFhG/",
     ingredients:[
@@ -666,7 +667,7 @@ const RECIPES = [
   },
   {
     id:18, title:"酪梨烤海鮮", emoji:"🥑",
-    cuisine:"創意", baseServings:2, servings:"2人份", time:"20 分鐘",
+    cuisine:"西式", baseServings:2, servings:"2人份", time:"20 分鐘",
     tags:["創意","海鮮","低碳"],
     source:"https://www.instagram.com/p/CMpDjRSH0dh/",
     ingredients:[
@@ -776,7 +777,7 @@ const RECIPES = [
   },
   {
     id:22, title:"花椰菜米漢堡", emoji:"🥦",
-    cuisine:"創意", baseServings:3, servings:"3個", time:"25 分鐘",
+    cuisine:"西式", baseServings:3, servings:"3個", time:"25 分鐘",
     tags:["創意","低碳","高蛋白"],
     source:"https://www.instagram.com/p/CRbND5hD8Yv/",
     ingredients:[
@@ -877,7 +878,7 @@ const RECIPES = [
   },
   {
     id:26, title:"優格豆乳雞", emoji:"🍗",
-    cuisine:"創意", baseServings:2, servings:"2人份", time:"20 分鐘（醃漬6小時）",
+    cuisine:"印度式", baseServings:2, servings:"2人份", time:"20 分鐘（醃漬6小時）",
     tags:["創意","低碳","高蛋白"],
     source:"https://www.instagram.com/p/CUrFVi6P7CT/",
     ingredients:[
@@ -960,7 +961,7 @@ const RECIPES = [
   },
   {
     id:29, title:"綜合香料海鮮", emoji:"🦑",
-    cuisine:"創意", baseServings:4, servings:"4~5人份", time:"30 分鐘",
+    cuisine:"台式", baseServings:4, servings:"4~5人份", time:"30 分鐘",
     tags:["創意","海鮮","低碳"],
     source:"https://www.instagram.com/p/CWADMkPvsco/",
     ingredients:[
@@ -1061,7 +1062,7 @@ const RECIPES = [
   },
   {
     id:33, title:"粉蒸雞胸綜合蔬菜", emoji:"🥦",
-    cuisine:"懶人", baseServings:2, servings:"2人份", time:"25 分鐘",
+    cuisine:"台式", baseServings:2, servings:"2人份", time:"25 分鐘",
     tags:["懶人","蔬菜"],
     source:"https://www.instagram.com/stories/highlights/18054079276019688/",
     ingredients:[
@@ -1089,7 +1090,7 @@ const RECIPES = [
   },
   {
     id:34, title:"甜豆雞腿炊飯", emoji:"🍚",
-    cuisine:"懶人", baseServings:2, servings:"2人份", time:"50 分鐘",
+    cuisine:"台式", baseServings:2, servings:"2人份", time:"50 分鐘",
     tags:["懶人","炊飯"],
     source:"https://www.instagram.com/stories/highlights/18054079276019688/",
     ingredients:[
@@ -1113,7 +1114,7 @@ const RECIPES = [
   },
   {
     id:35, title:"馬鈴薯燉雞肉", emoji:"🥔",
-    cuisine:"懶人", baseServings:3, servings:"3人份", time:"70 分鐘",
+    cuisine:"台式", baseServings:3, servings:"3人份", time:"70 分鐘",
     tags:["懶人","燉菜"],
     source:"https://www.instagram.com/stories/highlights/18054079276019688/",
     ingredients:[
@@ -1138,7 +1139,7 @@ const RECIPES = [
   },
   {
     id:36, title:"清燉蔬菜雞湯", emoji:"🍲",
-    cuisine:"懶人", baseServings:3, servings:"3人份", time:"60 分鐘",
+    cuisine:"台式", baseServings:3, servings:"3人份", time:"60 分鐘",
     tags:["懶人","湯","低碳"],
     source:"https://www.instagram.com/stories/highlights/18054079276019688/",
     ingredients:[
@@ -5411,7 +5412,7 @@ const RECIPES = [
 
   {
     id:195, title:"奶油菠菜焗餃子", emoji:"🥟",
-    cuisine:"創意", baseServings:2, servings:"2人份", time:"35分鐘",
+    cuisine:"中式", baseServings:2, servings:"2人份", time:"35分鐘",
     tags:["創意","水餃","焗烤","白醬"],
     source:"https://www.instagram.com/p/CsGpGIZvDgd/",
     ingredients:[
@@ -6210,7 +6211,7 @@ const RECIPES = [
   },
   {
     id:223, title:"氣炸蒜香黑胡椒薯條", emoji:"🥔",
-    cuisine:"點心", baseServings:1, servings:"1-2人份", time:"20分鐘",
+    cuisine:"西式", baseServings:1, servings:"1-2人份", time:"20分鐘",
     tags:["點心","氣炸","薯條","低卡","素食"],
     source:"https://www.instagram.com/p/Ct8_560sBaP/",
     ingredients:[
@@ -8008,7 +8009,7 @@ const RECIPES = [
     id: 286,
     title: "無糖無麵粉蘋果蛋白質蛋糕",
     emoji: "🍎",
-    cuisine: "烘焙",
+    cuisine:"減醣點心",
     baseServings: 6,
     servings: 6,
     time: "35分鐘",
@@ -9581,7 +9582,7 @@ const RECIPES = [
         id: 335,
         title: "巧克力布朗尼",
         emoji: "🍫",
-        cuisine: "美式甜點",
+        cuisine:"點心",
         baseServings: 9,
         servings: 9,
         time: "40分鐘",
@@ -9698,7 +9699,7 @@ const RECIPES = [
         id: 339,
         title: "2分鐘無麵粉蛋糕",
         emoji: "🎂",
-        cuisine: "甜點",
+        cuisine:"減醣點心",
         baseServings: 1,
         servings: 1,
         time: "5分鐘",
@@ -10153,7 +10154,7 @@ const RECIPES = [
       sauce: [],
       steps: ['茄子切段分二，浸泡鹽水避免氧化', '鹽水下鍋煮沸，茄子皮朝下川燙3分鐘取出', '加入米酒，川燙豬肉片至全熟，放涼備用', '沿著茄子纖維撕開成小條狀', '組裝擺盤再淋上醬汁就完成'],
       notes: '可自行調製喜歡的沾醬' },
-    { id: 408, title: '氣炸月亮蝦餅', emoji: '🦐', cuisine: '東南亞', baseServings: 2, servings: 2, time: '30分鐘', tags: ['氣炸鍋'], source: 'https://www.instagram.com/p/C2xE_nmvICN/',
+    { id: 408, title: '氣炸月亮蝦餅', emoji: '🦐', cuisine:"泰式", baseServings: 2, servings: 2, time: '30分鐘', tags: ['氣炸鍋'], source: 'https://www.instagram.com/p/C2xE_nmvICN/',
       ingredients: [{name:'細絞肉',qty:'適量'},{name:'蝦漿或花枝漿',qty:'適量'},{name:'蝦子',qty:'適量（切小塊）'},{name:'蛋清',qty:'適量'},{name:'白胡椒粉',qty:'適量'},{name:'越南米紙',qty:'數張'}],
       sauce: [],
       steps: ['將細絞肉、蝦漿、蝦子切小塊、蛋清、白胡椒粉全混合拌勻', '鋪在越南米紙上，鋪平後再蓋一張米紙', '放入氣炸鍋180度15分鐘，翻面200度4分鐘，再翻面200度4分鐘'],
@@ -10727,7 +10728,7 @@ const RECIPES = [
       sauce: [],
       steps: ['醬汁（柴魚醬油、味醂、米酒、水）入鍋煮滾', '放洋蔥煮至半透明', '放雞肉煮熟', '加入一半蛋液邊加熱邊攪拌', '半成形後加入剩餘蛋液續煮30秒起鍋，蓋在白飯上'],
       notes: '' },
-    { id: 506, title: '越南米紙腸粉', emoji: '🍤', cuisine: '越式', baseServings: 1, servings: 1, time: '15分鐘', tags: ['越式', '蒸'], source: 'https://www.instagram.com/p/DFzsUPPhoQ7/',
+    { id: 506, title: '越南米紙腸粉', emoji: '🍤', cuisine:"港式", baseServings: 1, servings: 1, time: '15分鐘', tags: ['越式', '蒸'], source: 'https://www.instagram.com/p/DFzsUPPhoQ7/',
       ingredients: [{name:'米紙',qty:'2張'},{name:'蝦仁',qty:'適量'}],
       sauce: [{name:'醬油',qty:'1匙'},{name:'味醂',qty:'1匙'},{name:'香油',qty:'1匙'},{name:'水',qty:'2匙'}],
       steps: ['米紙兩張用水泡軟，包入蝦仁', '電鍋外鍋一杯水蒸熟', '醬汁比例醬油:味醂:香油:水=1:1:1:2，調勻淋上'],
@@ -10797,7 +10798,7 @@ const RECIPES = [
       sauce: [],
       steps: ['取調理機，放入雞胸塊和調味料打出黏性', '將打好的雞肉泥鋪成圓形，中間放入火腿片和起司片後對折成雞排', '雞排表面依序沾上麵粉、蛋液和麵包粉', '起油鍋，加溫至160°C後放入酥炸至表面金黃即可'],
       notes: '' },
-    { id: 520, title: '蛋沙拉松露薯條', emoji: '🍟', cuisine: '創意', baseServings: 1, servings: 1, time: '10分鐘', tags: ['創意', '低卡'], source: 'https://www.instagram.com/p/DGK359-zqxu/',
+    { id: 520, title: '蛋沙拉松露薯條', emoji: '🍟', cuisine:"西式", baseServings: 1, servings: 1, time: '10分鐘', tags: ['創意', '低卡'], source: 'https://www.instagram.com/p/DGK359-zqxu/',
       ingredients: [{name:'小馬鈴薯',qty:'3-4個'},{name:'茶葉蛋',qty:'2個'},{name:'希臘優格',qty:'2湯匙'},{name:'松露醬',qty:'適量'},{name:'黑胡椒',qty:'適量'},{name:'義式香料',qty:'適量'}],
       sauce: [],
       steps: ['馬鈴薯切成條狀備用', '兩顆茶葉蛋剝殼壓碎', '加入2湯匙希臘優格和壓碎的茶葉蛋混合', '加入松露醬、黑胡椒粉、義式香料調味', '調好的蛋沙拉醬汁淋在薯條上即完成'],
@@ -11007,7 +11008,7 @@ const RECIPES = [
       sauce: [{name:'水',qty:'800g'},{name:'鹽',qty:'1茶匙'},{name:'糖',qty:'1茶匙'},{name:'白胡椒粉',qty:'1茶匙'},{name:'米酒',qty:'2大匙'}],
       steps: ['爆皮用熱水浸泡；大白菜切大片；紅蘿蔔切片；泡發香菇切絲', '熱鍋加1大匙油，放入蛋液炒散至表面酥香', '放入香菇絲、油蔥酥炒香，再放入大白菜、紅蘿蔔片、扁魚和所有調味料', '蓋上鍋蓋，中小火燉煮25分鐘', '5分鐘後開蓋略攪拌，持續煮至白菜軟化、湯色變濃即可'],
       notes: '扁魚是提鮮關鍵，可用蝦米替代；爆皮讓湯頭更濃郁' },
-    { id: 562, title: '酸辣蝦仁沙拉', emoji: '🥗', cuisine: '東南亞', baseServings: 2, servings: 2, time: '15分鐘', tags: ['東南亞', '沙拉', '快速'], source: 'https://www.instagram.com/p/DJ9H8_bN4hi/',
+    { id: 562, title: '酸辣蝦仁沙拉', emoji: '🥗', cuisine:"泰式", baseServings: 2, servings: 2, time: '15分鐘', tags: ['東南亞', '沙拉', '快速'], source: 'https://www.instagram.com/p/DJ9H8_bN4hi/',
       ingredients: [{name:'蝦仁',qty:'300g'},{name:'小黃瓜片',qty:'40g'},{name:'小番茄丁',qty:'50g'},{name:'洋蔥絲',qty:'50g'},{name:'蒜末',qty:'10g'},{name:'香菜末',qty:'10g'},{name:'辣椒丁',qty:'10g'},{name:'檸檬片',qty:'少許'}],
       sauce: [{name:'糖',qty:'1大匙'},{name:'魚露',qty:'2大匙'},{name:'檸檬汁',qty:'2大匙'}],
       steps: ['蝦仁放入滾水汆燙至熟，立刻泡入冰水中備用', '取一大碗，放入所有材料與所有調味料，全部拌勻即可'],
@@ -11720,7 +11721,29 @@ const RECIPES = [
       ingredients: [{name:'梅花肉片',qty:'200克'},{name:'甜蔥（大蔥）',qty:'1根'},{name:'水',qty:'80cc'},{name:'白芝麻',qty:'1大匙'}],
       sauce: [{name:'照燒汁',qty:'2大匙'}],
       steps: ['大蔥白斜切片、蔥綠直切片、梅花肉片對半切備用。','鍋中下油，放入梅花肉炒至無血色取出，利用鍋底豬油炒蔥白，接著放回豬肉，加入照燒汁及水煮滾。','下蔥綠開始拌炒收汁，待醬汁濃稠撒上白芝麻即完成。'],
-      notes: '可拌飯做成丼飯或配高麗菜做成定食。加胡麻油及味噌可提升香氣。' },
+      notes: '可拌飯做成丼飯或配高麗菜做成定食。加胡麻油及味噌可提升香氣。' },,
+  {
+    id:699, title:"低糖無麵粉巧克力布朗尼", emoji:"🍫",
+    cuisine:"減醣點心", baseServings:9, servings:"9塊", time:"40分鐘",
+    tags:["減醣","烤箱","低碳"],
+    source:"https://www.youtube.com/watch?v=KrF8Ar0DLEc",
+    ingredients:[
+      {name:"無鹽發酵奶油",qty:"120克"},
+      {name:"72%黑巧克力",qty:"100克"},
+      {name:"雞蛋",qty:"2顆"},
+      {name:"零卡糖",qty:"90克"},
+      {name:"杏仁粉（烘焙專用）",qty:"60克"}
+    ],
+    sauce:[],
+    steps:[
+      "黑巧克力切碎，隔水加熱至約50°C融化，持續攪拌，融化後加入奶油攪拌至完全融合。",
+      "雞蛋打散，加入零卡糖拌勻備用。",
+      "將蛋糖液倒入巧克力奶油中拌勻，篩入杏仁粉拌勻（不加核桃）。",
+      "倒入15x15cm模具，放入預熱180°C烤箱烘烤20分鐘。",
+      "完全放涼後脫模，切塊享用。"
+    ],
+    notes:"以杏仁粉取代低筋麵粉、零卡糖取代白砂糖，無麩質低碳水版本。模具15x15cm。"
+  }
 ];
 
 // ── State ─────────────────────────────────────────────────────────
@@ -11753,6 +11776,7 @@ var TIME_BUCKETS = [
 var lockedTags = [];
 var activeCuisine = null;
 var activeTime = null;
+var CUISINE_ORDER = ['台式','中式','港式','日式','韓式','泰式','印度式','西式','點心','減醣點心'];
 var modalRecipe = null;
 var modalServings = 1;
 
@@ -11798,6 +11822,10 @@ function buildQuickBar(searchText) {
   label.className = "quick-label";
   label.textContent = "食材";
   bar.appendChild(label);
+  var chipsWrap = document.createElement("div");
+  chipsWrap.className = "chips-wrap";
+  bar.appendChild(chipsWrap);
+  bar = chipsWrap;
   var locked = lockedTags.map(function(t) { return t.toLowerCase(); });
   var st = (searchText || "").trim().toLowerCase();
   QUICK_INGS.forEach(function(ing) {
@@ -11829,23 +11857,23 @@ function buildCuisineBar() {
   label.className = "cuisine-label";
   label.textContent = "種類";
   bar.appendChild(label);
-  var cuisines = [];
-  RECIPES.forEach(function(r) {
-    if (r.cuisine && cuisines.indexOf(r.cuisine) === -1) cuisines.push(r.cuisine);
-  });
+  var chipsWrap = document.createElement("div");
+  chipsWrap.className = "chips-wrap";
+  bar.appendChild(chipsWrap);
+  bar = chipsWrap;
   // 全部 chip
   var all = document.createElement("button");
   all.className = "c-chip" + (activeCuisine === null ? " active" : "");
   all.textContent = "全部";
   all.onclick = function() { activeCuisine = null; buildCuisineBar(); render(); };
   bar.appendChild(all);
-  // Cuisine chips
-  cuisines.forEach(function(c) {
+  // Cuisine chips - fixed order
+  CUISINE_ORDER.forEach(function(cuisine) {
     var chip = document.createElement("button");
-    chip.className = "c-chip" + (activeCuisine === c ? " active" : "");
-    chip.textContent = c;
+    chip.className = "c-chip" + (activeCuisine === cuisine ? " active" : "");
+    chip.textContent = cuisine;
     chip.onclick = function() {
-      activeCuisine = (activeCuisine === c) ? null : c;
+      activeCuisine = (activeCuisine === cuisine) ? null : cuisine;
       buildCuisineBar();
       render();
     };
@@ -11867,11 +11895,12 @@ function hasFilter() {
 
 function renderTimeBar() {
   var bar = document.getElementById("timeBar");
-  var html = '<span class="time-label">耗時</span>';
+  var html = '<span class="time-label">耗時</span><div class="chips-wrap">';
   TIME_BUCKETS.forEach(function(b) {
     var active = activeTime && activeTime.label === b.label ? ' active' : '';
     html += '<button class="time-chip' + active + '" onclick="toggleTime(' + JSON.stringify(b) + ')">' + b.label + '</button>';
   });
+  html += '</div>';
   bar.innerHTML = html;
 }
 
@@ -11890,7 +11919,11 @@ function render() {
   grid.innerHTML = "";
   var shown = 0;
 
-  var CUISINE_GROUPS = { '中式': ['中式', '川式', '川味'] };
+  var CUISINE_GROUPS = {
+    '中式': ['中式', '川式', '川味'],
+    '印度式': ['印度式', '印度', '印度風'],
+    '西式': ['西式', '義式', '美式', '西班牙', '美式甜點']
+  };
 
   RECIPES.forEach(function(r) {
     // Cuisine filter
@@ -11906,7 +11939,7 @@ function render() {
     }
 
     // Ingredient filter (AND logic)
-    var allIngNames = (r.ingredients || []).concat(r.sauce || []).map(function(i) { return i.name.toLowerCase(); });
+    var allIngNames = (r.ingredients || []).concat(r.sauce || []).map(function(i) { return (i && i.name) ? i.name.toLowerCase() : ''; });
     var hits = activeTags.filter(function(t) {
       return allIngNames.some(function(n) { return n.indexOf(t) !== -1; });
     });
