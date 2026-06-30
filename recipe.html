@@ -19,7 +19,7 @@
   header h1 { font-size: 20px; font-weight: 700; white-space: nowrap; }
   header h1 span { color: #e85d04; }
 
-  .search-area { flex: 1; max-width: 520px; }
+  .search-area { flex: 1; }
   .tag-input-wrap {
     display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
     background: #f4f2ef; border: 1.5px solid #e0dbd4; border-radius: 12px;
@@ -199,6 +199,7 @@
     .card-time { font-size: 11px; }
     .chip-break { display: none; }
     .stats-bar { margin-top: 0; }
+    .q-chip:hover, .c-chip:hover { border-color: #e0dbd4; color: #666; background: #fff; }
   }
   
   .chips-wrap { display: flex; flex-wrap: wrap; column-gap: 8px; row-gap: 4px; flex: 1; align-items: center; }
@@ -11815,7 +11816,7 @@ function scaleQty(qty, factor) {
 }
 
 // ── Quick ingredient chips ────────────────────────────────────────
-var QUICK_INGS = ['雞蛋','雞胸','雞腿','豬肉','豬絞肉','牛肉','蝦','鮭魚','豆腐','番茄','高麗菜','花椰菜','馬鈴薯','茄子','菠菜','杏鮑菇','秋葵','豆芽','起司','味噌','|','巧克力','豆漿','牛奶','蘋果','香蕉'];
+var QUICK_INGS = ['雞蛋','雞胸','雞腿','豬肉','豬絞肉','牛肉','蝦','鮭魚','豆腐','起司','番茄','高麗菜','菠菜','花椰菜','茄子','秋葵','豆芽','杏鮑菇','馬鈴薯','地瓜','味噌','|','巧克力','豆漿','牛奶','蘋果','香蕉'];
 
 function buildQuickBar(searchText) {
   var bar = document.getElementById("quickBar");
@@ -11911,6 +11912,12 @@ function renderTimeBar() {
   var chipsWrap = document.createElement("div");
   chipsWrap.className = "chips-wrap";
   bar.appendChild(chipsWrap);
+  // 不限 chip
+  var allChip = document.createElement("button");
+  allChip.className = "c-chip" + (!activeTime ? " active" : "");
+  allChip.textContent = "不限";
+  allChip.onclick = function() { activeTime = null; renderTimeBar(); render(); };
+  chipsWrap.appendChild(allChip);
   TIME_BUCKETS.forEach(function(b) {
     var chip = document.createElement("button");
     chip.className = "c-chip" + (activeTime && activeTime.label === b.label ? " active" : "");
@@ -11959,7 +11966,10 @@ function render() {
     }
 
     // Ingredient filter (AND logic)
-    var allIngNames = (r.ingredients || []).concat(r.sauce || []).map(function(i) { return (i && i.name) ? i.name.toLowerCase() : ''; });
+    var ings = Array.isArray(r.ingredients) ? r.ingredients : [];
+    var sauces = Array.isArray(r.sauce) ? r.sauce : [];
+    var allIngNames = ings.concat(sauces).map(function(i) { return (i && i.name) ? i.name.toLowerCase() : ''; });
+    if (typeof r.ingredients === 'string') allIngNames.push(r.ingredients.toLowerCase());
     var hits = activeTags.filter(function(t) {
       return allIngNames.some(function(n) { return n.indexOf(t) !== -1; });
     });
