@@ -10265,7 +10265,7 @@ const RECIPES = [
       id: 427,
       name: '味噌烤雞腿串',
       category: '雞肉',
-      time: '25分鐘（＋醃漬2小時）',
+      time: '25分鐘（＋冰箱醃漬30分鐘以上）',
       source: 'https://www.instagram.com/p/C_MWyDJuNbN/',
       ingredients: '去骨雞腿3片、芝麻；醃製：味噌1大匙、味醂2匙、醬油2匙',
       steps: '①剪成約4.5cmx4.5cm ②混合醬料均勻塗抹冰箱醃30分鐘以上 ③竹籤燙過串起 ④烤箱預熱190度烤10分鐘翻面灑芝麻 ⑤200度再烤10分鐘完成'
@@ -10274,7 +10274,7 @@ const RECIPES = [
       id: 428,
       name: '鮮粹雞胸燜金針',
       category: '雞肉',
-      time: '20分鐘（＋醃漬30分鐘）',
+      time: '20分鐘（＋醃漬10分鐘）',
       source: 'https://www.instagram.com/p/C_VCIIJvb2u/',
       ingredients: '雞胸肉200g、金針菇1包、洋蔥1/4顆、酪梨油、蒜末、蔥花、鮮粹雞湯粉約2g；醃料：醬油15ml、砂糖1茶匙、蒜泥、鮮粹雞湯粉1/2茶匙、片栗粉5g',
       steps: '①醃製雞胸肉 ②撒片栗粉抓醃靜置10分鐘 ③備料 ④加油熱鍋炒洋蔥蒜末 ⑤鋪金針菇調味炒軟 ⑥熄火鋪平雞胸肉 ⑦鍋邊加30ml水蓋鍋小火悶1分30秒 ⑧灑蔥花完成'
@@ -10310,7 +10310,7 @@ const RECIPES = [
       id: 432,
       name: '馬鈴薯起司煎餅',
       category: '蔬食',
-      time: '20分鐘',
+      time: '20分鐘（＋泡水5分鐘）',
       source: 'https://www.instagram.com/p/C_hYF5-Pj5P/',
       ingredients: '馬鈴薯中型1顆、乳酪絲少許、鹽巴、黑胡椒粉、麵粉2匙',
       steps: '1.馬鈴薯削皮刨絲泡水5分鐘洗去澱粉瀝乾 2.加鹽巴黑胡椒粉及2匙麵粉抓拌均勻 3.鍋熱油下馬鈴薯壓扁中小火煎至金黃翻面灑乳酪絲蓋鍋蓋燜至起司融化 4.出鍋灑黑胡椒或沾番茄醬'
@@ -11478,7 +11478,7 @@ const RECIPES = [
       sauce: [],
       steps: ['白蘿蔔去皮切塊，蘿蔔葉切碎。', '白蘿蔔加水放調理機打成泥狀，過篩壓除多餘水分。', '蘿蔔泥加蝦仁丁、蘿蔔葉、鹽、白胡椒粉、太白粉混合均勻。', '切成小塊，熱鍋加油煎至兩面金黃即完成。'],
       notes: '' },
-    { id: 653, title: '醉雞包蝦', emoji: '🍗', cuisine: '台式', baseServings: 2, servings: 2, time: '隔夜', tags: ['海鮮', '電鍋', '醉雞'], source: 'https://www.instagram.com/p/DT0FqypjGZ4/',
+    { id: 653, title: '醉雞包蝦', emoji: '🍗', cuisine: '台式', baseServings: 2, servings: 2, time: '45分鐘 + 冰過夜', tags: ['海鮮', '電鍋', '醉雞'], source: 'https://www.instagram.com/p/DT0FqypjGZ4/',
       ingredients: [{name:'去骨雞腿',qty:'1支'},{name:'蝦',qty:'6隻'},{name:'米酒',qty:'適量'},{name:'鹽',qty:'適量'},{name:'當歸',qty:'2片'},{name:'黃耆',qty:'2片'},{name:'枸杞',qty:'1小把'},{name:'紹興酒',qty:'150ml'}],
       sauce: [],
       steps: ['去骨雞腿用菜刀片過斷筋，加米酒、鹽醃去腥。', '雞腿中間鋪蝦6隻，用鋁箔紙壓實包緊，電鍋2杯水蒸至跳起。', '取出後盤中雞湯汁加當歸、黃耆、枸杞再蒸5分鐘。', '密封袋中倒入紹興酒及中藥湯汁，放入雞腿肉排除空氣封口。', '放冰箱隔夜入味即完成。'],
@@ -11788,6 +11788,11 @@ function formatTimeDisplay(t) {
   // 拆出括號備註
   var note = null;
   var main = t.replace(/[（(]([^）)]+)[）)]/g, function(_, n) { note = n; return ''; }).trim();
+  // 若無括號備註，嘗試「 + 」或「 ＋ 」分隔符（如 "75 分鐘 + 冷藏一晚"）
+  if (!note) {
+    var plusMatch = main.match(/^(.+?)\s+[+＋]\s+(.+)$/);
+    if (plusMatch) { main = plusMatch[1].trim(); note = plusMatch[2].trim(); }
+  }
   // 用 parseMinutes 取分鐘數
   var mins = parseMinutes(main);
   var display;
@@ -11798,10 +11803,25 @@ function formatTimeDisplay(t) {
   } else if (mins > 0) {
     display = mins + ' 分鐘';
   } else {
-    // 無法解析，加空格
-    display = main.replace(/(\d+)/g, ' $1 ').replace(/\s+/g, ' ').trim();
+    // 無法解析：若是過夜類就顯示冰過夜，否則加空格
+    display = /一晚|隔夜|冰過夜|一夜|半天/.test(main) ? '冰過夜'
+            : main.replace(/(\d+)/g, ' $1 ').replace(/\s+/g, ' ').trim();
   }
-  if (note) display += ' <span class="time-note">＋' + note + '</span>';
+  if (note) {
+    var noteTrimmed = note.replace(/^[＋+加]+/, '').trim();
+    if (!/^不含/.test(noteTrimmed)) {
+      var noteClean = noteTrimmed.replace(/^含/, '').trim();
+      var noteSpaced = noteClean.replace(/(\d)([^\d\s])/g, '$1 $2').replace(/([^\d\s])(\d)/g, '$1 $2');
+      if (/一晚|隔夜|冰過夜|一夜|半天/.test(noteClean)) {
+        // 過夜型：XX（＋冰過夜）
+        display = display + '（＋冰過夜）';
+      } else {
+        // 醃漬/浸泡具體時間型：XX（含醃漬 YY 分鐘）
+        display = display + '（含' + noteSpaced + '）';
+      }
+    }
+    // 不含醃漬：只顯示時間
+  }
   return display;
 }
 
